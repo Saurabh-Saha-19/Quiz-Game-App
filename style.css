@@ -1,0 +1,48 @@
+body {
+  background-color: palevioletred;
+  font-family: "Courier New", Courier, monospace;
+  box-sizing: border-box;
+}
+
+#app {
+  background-color: aliceblue;
+  width: 70%;
+  max-width: 550px;
+  padding: 30px;
+  margin: 100px auto;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: ;
+}
+
+#quiz-body #title {
+  margin-top: 0px;
+  display: flex;
+  font-size: 1.8rem;
+}
+
+#quiz-body #question {
+  font-size: 1.3rem;
+}
+
+#answer-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  width: 100%;
+  padding: 8px;
+  margin: 0.5rem 0;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: left;
+  border: 0;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: rgb(218, 218, 255);
+  cursor: pointer;
+}
