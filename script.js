@@ -25,8 +25,10 @@ const questions = [
 
 const questionEle = document.getElementById("question");
 const optionsEle = document.getElementById("answer-btns");
+const scoreEle = document.getElementById("score");
 
 let currQuesIndex = 0;
+let score = 0;
 function displayQuestion() {
   optionsEle.textContent = "";
   const { question, options, correctAns } = questions[currQuesIndex];
@@ -57,10 +59,13 @@ function checkAns(event) {
   //console.log(selectedOpt);
   if (selectedOpt.dataset.correct === "true") {
     selectedOpt.classList.add("correct");
+    score++;
   } else {
     selectedOpt.classList.add("wrong");
     showAns();
+    score = score - 0.75;
   }
+  scoreEle.textContent = `Score : ${score}`;
 
   setTimeout(() => {
     resetButtonsState();
@@ -81,6 +86,7 @@ function nextQuesDisplay() {
   currQuesIndex++;
   if (currQuesIndex >= questions.length) {
     currQuesIndex = 0;
+    score = 0;
     endgame(); // to be declared
   }
 
@@ -102,3 +108,7 @@ function resetButtonsState() {
 document.addEventListener("DOMContentLoaded", () => {
   displayQuestion();
 });
+
+function endgame() {
+  scoreEle.textContent = `Score : ${score}`;
+}

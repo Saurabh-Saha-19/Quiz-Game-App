@@ -42,6 +42,12 @@ body {
   border-radius: 10px;
 }
 
+#score {
+  margin: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
 .btn:hover {
   background-color: rgb(218, 218, 255);
   cursor: pointer;
