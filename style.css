@@ -112,6 +112,10 @@ body {
   box-shadow: 1px 1px 1px;
 }
 
+.final-score {
+  font-weight: 700;
+}
+
 @media screen and (max-width: 640px) {
   #skip-restart {
     flex-direction: column;

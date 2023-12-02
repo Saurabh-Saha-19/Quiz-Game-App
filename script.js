@@ -26,11 +26,19 @@ const questions = [
 const questionEle = document.getElementById("question");
 const optionsEle = document.getElementById("answer-btns");
 const scoreEle = document.getElementById("score");
+const skipButton = document.getElementsByClassName("skipbtn")[0];
+const restartButton = document.getElementsByClassName("restartbtn")[0];
+const quizBodyEle = document.getElementById("quiz-body");
+const skipRestart = document.getElementById("skip-restart");
+const scoreDivEle = document.getElementById("score-div");
 
 let currQuesIndex = 0;
 let score = 0;
+let timeOut;
+
 function displayQuestion() {
   optionsEle.textContent = "";
+  //skipButton.style.display = "block";
   const { question, options, correctAns } = questions[currQuesIndex];
   questionEle.textContent = question;
   options.forEach((option) => {
@@ -67,7 +75,7 @@ function checkAns(event) {
   }
   scoreEle.textContent = `Score : ${score}`;
 
-  setTimeout(() => {
+  timeOut = setTimeout(() => {
     resetButtonsState();
     nextQuesDisplay();
   }, 2000);
@@ -86,8 +94,7 @@ function nextQuesDisplay() {
   currQuesIndex++;
   if (currQuesIndex >= questions.length) {
     currQuesIndex = 0;
-    score = 0;
-    endgame(); // to be declared
+    endgame();
   }
 
   displayQuestion();
@@ -109,6 +116,39 @@ document.addEventListener("DOMContentLoaded", () => {
   displayQuestion();
 });
 
+skipButton.addEventListener("click", () => {
+  skipQues();
+});
+
+restartButton.addEventListener("click", () => {
+  restartQuiz();
+});
+
+function skipQues() {
+  nextQuesDisplay();
+}
+
+function restartQuiz() {
+  clearTimeout(timeOut);
+  score = 0;
+  currQuesIndex = 0;
+  scoreEle.textContent = ``;
+  quizBodyEle.style.display = "block";
+  scoreDivEle.textContent = "";
+  displayQuestion();
+  skipButton.style.display = "block";
+}
+
 function endgame() {
-  scoreEle.textContent = `Score : ${score}`;
+  skipButton.style.display = "None";
+  quizBodyEle.style.display = "None";
+  const h1Ele = document.createElement("h1");
+  h1Ele.textContent = `Quiz Completed !!!`;
+
+  const scoreEle = document.createElement("p");
+  scoreEle.textContent = `Your Final Score : ${score}`;
+  scoreEle.classList.add("final-score");
+  scoreDivEle.appendChild(h1Ele);
+  scoreDivEle.appendChild(scoreEle);
+  //scoreEle.textContent = `Score : ${score}`;
 }
