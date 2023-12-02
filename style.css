@@ -62,3 +62,39 @@ body {
 .wrong:hover {
   background-color: rgb(255, 163, 163);
 }
+
+#skip-restart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skipbtn {
+  background-color: rgb(210, 210, 247);
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 10px;
+  padding: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 20%;
+  border: none;
+}
+.skipbtn:hover {
+  background-color: rgb(149, 149, 244);
+  cursor: pointer;
+  box-shadow: 2px 2px 1px;
+}
+.restartbtn {
+  background-color: rgb(191, 244, 255);
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 10px;
+  padding: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 20%;
+  border: none;
+}
+.restartbtn:hover {
+  background-color: rgb(123, 233, 255);
+  cursor: pointer;
+  box-shadow: 2px 2px 1px;
+}
