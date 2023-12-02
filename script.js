@@ -62,7 +62,15 @@ function displayQuestion() {
   });
 }
 
+function disableOptions() {
+  const options = Array.from(optionsEle.children);
+  options.forEach((option) => {
+    option.disabled = true;
+  });
+}
+
 function checkAns(event) {
+  disableOptions();
   const selectedOpt = event.target;
   //console.log(selectedOpt);
   if (selectedOpt.dataset.correct === "true") {
@@ -125,6 +133,7 @@ restartButton.addEventListener("click", () => {
 });
 
 function skipQues() {
+  clearTimeout(timeOut);
   nextQuesDisplay();
 }
 
